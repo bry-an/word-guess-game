@@ -1,6 +1,44 @@
-$tile-font: 'Arial';
+$tile-font: "Arial", "Helvetica Neue", Helvetica, sans-serif;
+$primary-font: "Georgia", "Times", "Times New Roman", "serif";
 $jBlue: #060ce9;
 
-.instructions {
-    font-size: 0.5rem;
+%block {
+    background-color: $jBlue;
+    font-family: $tile-font;
+    font-size: 2rem;
+    text-align: center;
+    width: 50px;
+    height: 75px;
+    border: 0.5px solid white;
+    margin: 5px;
+    float: left;
+    padding-top: 10px;
 }
+
+body {
+    font-family: $primary-font;
+}
+
+button, button:focus {
+    background-color: $jBlue;
+    color: white;
+}
+
+letterBlock {
+    @extend %block;
+    color: white;
+    font-size: 0;
+}
+
+spaceBlock {
+    @extend %block;
+    background-color: white;
+}
+
+completedBlock {
+    @extend %block;
+    color: white;
+    font-size: 3rem;
+}
+
+

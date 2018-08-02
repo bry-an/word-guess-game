@@ -10,45 +10,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="assets/javascript/game.js"></script>
 </head>
+
 <body>
-<h1>
-    This is Jeopardy! - Word-Guess Game!
-</h1>
-<h3>
-    <p class = "instructions">
-        Instructions:
-        <ol>
-            <li>
-                Click Play Game! to view your clue. 
-                The category and value are displayed beneath the clue.
-            </li>
-            <li>
-                If you think you know the answer, click Double! to risk double the value. 
-            </li>
-            <li>
-                Type letters to make a guess. You may submit at most 
-                five incorrect guesses for each clue, depending on the length of correct answer.
-            </li>
-            <li>
-                If you are able to fill in all blanks, you gain the clue value (or double if clicked).
-                If unable, you lose the same. 
-            </li>
-            <li>
-                Good luck!
-            </li>
-        </ol>
-    </p>
-</h3>
-<input type="submit" value="Play Game!" id="submit" onclick="game()">
+    <h1>
+        This is Jeopardy! - Word-Guess Game!
+    </h1>
+        <p class="instructions">
+            Instructions:
+            <ol>
+                <li>
+                    Click Play Game! to view your clue. The category and value are displayed beneath the clue.
+                </li>
+                <li>
+                    If you think you know the answer, click Double! to risk double the value.
+                </li>
+                <li>
+                    Type letters to make a guess. You may submit at three incorrect guesses for each clue, depending on the length of correct
+                    answer.
+                </li>
+                <li>
+                    If you are able to fill in all blanks, you gain the clue value (or double if clicked). If unable, you lose the same.
+                </li> <li>
+                    Good luck!
+                </li>
+            </ol>
+        </p>
 
-<div id = "clue">
-</div>
-    <div id = "category"></div>
+        <button onclick="game()">Click to Play!</button>
+    <div id="clue">
+    </div>
+    <div id="category"></div>
 
-<div id = "userAnswer">
-</div>
+    <div id="userAnswer">
+    </div>
+    <div id="gameStatus"></div>
 
-<div id = "userStats">
-</div>
+    <div id="userStats">
+    </div>
 </body>
+<audio id="lose" src="assets/sounds/lose.wav"></audio>
+<audio id="loadGame" src="assets/sounds/loadgame.wav"></audio>
+<audio id="wrongAnswer" src="assets/sounds/wronganswer.wav"></audio>
+<audio id="rightAnswer"><source src="assets/sounds/startgame.wav"></audio>
+<audio id="lose" src="assets/sounds/lose.wav"></audio>
+
 </html>
