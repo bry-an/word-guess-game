@@ -1,21 +1,56 @@
-completedBlock, spaceBlock, letterBlock {
+lossesBlock, winsBlock, wrongLetterBlock, completedBlock, spaceBlock, letterBlock {
   background-color: #060ce9;
   font-family: "Arial", "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 2rem;
+  font-size: 3rem;
   text-align: center;
   width: 50px;
   height: 75px;
   border: 0.5px solid white;
-  margin: 5px;
+  margin: 8px;
   float: left;
-  padding-top: 5px;
+  padding-top: 10px;
+}
+
+#gameStatus, #category, #clue {
+  font-family: "Arial", "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 3rem;
+  color: white;
+  font-size: 1.8rem;
+  text-align: center;
+  padding: 20px;
+  margin: 15px auto 15px auto;
+  border-radius: 3px;
 }
 
 body {
   font-family: "Georgia", "Times", "Times New Roman", "serif";
 }
 
-button, button:focus {
+.container {
+  background-image: url("../images/bkg.jpg");
+  background-repeat: repeat;
+  padding: 50px;
+}
+
+.content {
+  margin: auto;
+  width: 80%;
+  background-color: white;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #666;
+}
+
+#logo {
+  margin-bottom: 30px;
+}
+
+#playButton {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+button, button:focus, button:hover {
   background-color: #060ce9;
   color: white;
 }
@@ -27,10 +62,65 @@ letterBlock {
 
 spaceBlock {
   background-color: white;
+  border: 1px solid #ccc;
 }
 
 completedBlock {
   color: white;
+  font-size: 3rem;
+}
+
+wrongLetterBlock {
+  background-color: red;
+  color: white;
+  font-size: 3rem;
+}
+
+wrongLetterBox {
+  width: 230px;
+  float: left;
+}
+
+winsBlock {
+  color: white;
+  float: right;
+}
+
+lossesBlock {
+  background-color: red;
+  color: white;
+}
+
+#clue {
+  width: 60%;
+}
+
+#category {
+  padding: 5px;
+}
+
+#userAnswer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+}
+
+#wrongLettersText {
+  margin-top: 20px;
+  font-size: 2.5rem;
+}
+
+#userWins {
+  font-size: 2rem;
+  text-align: center;
+  border: 1px solid #ccc;
+  color: #060ce9;
+}
+
+#userLosses {
+  font-size: 2rem;
+  text-align: center;
+  border: 1px solid #ccc;
+  color: red;
 }
 
 /*# sourceMappingURL=style.css.map */

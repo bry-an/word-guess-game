@@ -6,52 +6,59 @@
     <link rel="stylesheet" href="assets/css/skeleton.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <meta charset="utf-8" />
-    <title>Jeopardy! Word Game</title>
+    <title>Jeopardy! Word Guess</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="assets/javascript/game.js"></script>
 </head>
+<div class="u-full-width">
+    <div class="container">
 
-<body>
-    <h1>
-        This is Jeopardy! - Word-Guess Game!
-    </h1>
-        <p class="instructions">
-            Instructions:
-            <ol>
-                <li>
-                    Click Play Game! to view your clue. The category and value are displayed beneath the clue.
-                </li>
-                <li>
-                    If you think you know the answer, click Double! to risk double the value.
-                </li>
-                <li>
-                    Type letters to make a guess. You may submit at three incorrect guesses for each clue, depending on the length of correct
-                    answer.
-                </li>
-                <li>
-                    If you are able to fill in all blanks, you gain the clue value (or double if clicked). If unable, you lose the same.
-                </li> <li>
-                    Good luck!
-                </li>
-            </ol>
-        </p>
-
-        <button onclick="game()">Click to Play!</button>
-    <div id="clue">
+        <body>
+            <div class="content">
+                <img src="http://logonoid.com/images/jeopardy-logo.png" id="logo" alt="Jeopardy Logo" width="688" />
+                <h1>
+                    <em>This</em> is
+                    <span style="color:#060ce9"> Jeopardy!</span> Word-Guess!
+                </h1>
+                <div class="row">
+                    <p class="instructions">
+                        Instructions:
+                        <ol>
+                            <li>
+                                Click "Play Game!" to view your clue. The category is displayed beneath the clue.
+                            </li>
+                            <li>
+                                Type letters to attempt to fill in blanks. You may submit three incorrect guesses for each clue.
+                            </li>
+                            <li>
+                                Win the round by filling out the entirety of the answer.
+                            </li>
+                        </ol>
+                    </p>
+                </div>
+                <div class="row">
+                    <div id="playButton">
+                        <button onclick="game()">Click to Play!</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="six columns" id="userWins"></div>
+                    <div class="six columns" id="userLosses"></div>
+                </div>
+                <div class="row" id="clue"></div>
+                <div class="row" id="category"></div>
+                <div class="row" id="userAnswer"></div>
+                <div class="row" id="wrongLettersText"></div>
+                <div class="row" id="wrongLetters"></div>
+                <div class="row" id="gameStatus"></div>
+            </div>
+        </body>
     </div>
-    <div id="category"></div>
-
-    <div id="userAnswer">
-    </div>
-    <div id="gameStatus"></div>
-
-    <div id="userStats">
-    </div>
-</body>
+</div>
 <audio id="lose" src="assets/sounds/lose.wav"></audio>
 <audio id="loadGame" src="assets/sounds/loadgame.wav"></audio>
 <audio id="wrongAnswer" src="assets/sounds/wronganswer.wav"></audio>
-<audio id="rightAnswer"><source src="assets/sounds/startgame.wav"></audio>
+<audio id="rightAnswer" src="assets/sounds/startgame.wav"></audio>
 <audio id="lose" src="assets/sounds/lose.wav"></audio>
 
 </html>

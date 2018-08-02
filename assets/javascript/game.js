@@ -2,6 +2,7 @@
 var losses = 0; //count of losses
 var wins = 0; //count of wins
 var money = 0; //amount of money
+var colorjBlue = "#060ce9";
 
 //JSON request
 
@@ -28,18 +29,20 @@ function clearElements(parent) {
     }
 }
 
-//variables to sound IDs
-rightAnswer = document.getElementById("rightAnswer");
-wrongAnswer = document.getElementById("wrongAnswer");
+
 
 //main game function
 function playGame(jObj) {
     //variables for DOM elements
+    clearElements(document.getElementById("wrongLetters"));
     var clueDom = document.getElementById("clue");
     var catDom = document.getElementById("category");
     var userAnswerDom = document.getElementById("userAnswer");
     var gameStatusDom = document.getElementById("gameStatus");
-    var statsDom = document.getElementById("userStats");
+    var wrongLettersDom = document.getElementById("wrongLetters")
+        .appendChild(document.createElement("wrongLetterBox"));
+    var userWinsDom = document.getElementById("userWins");
+    var userLossesDom = document.getElementById("userLosses");
 
     var clue = jObj[0].question; //assign question to clue variable
     var cat = jObj[0].category.title; //assign category to cat variable
@@ -48,6 +51,9 @@ function playGame(jObj) {
     var count = 0; //keeping count of correctly guessed letters
     var guessList = []; //list of guessed letters
     var wrongList = []; //list of wrong guesses
+    var gameStatus = true; //stop flag
+
+    console.log(guesses);
 
     //remove problematic HTML tags from some answers
     var noHTML = dirtyAnswer.replace(/(<([^>]+)>)/ig, "");
@@ -60,17 +66,36 @@ function playGame(jObj) {
     clearElements(catDom);
     clearElements(userAnswerDom);
     clearElements(gameStatusDom);
-
+    gameStatusDom.style.backgroundColor = "white";
     console.log(answerArr);
 
+    //play loading music
+    document.getElementById("loadGame").play();
+    
+    //function to display user stats
+    function displayStats() {
+        userWinsDom
+            .textContent = "Wins";
+        userWinsDom
+            .appendChild(document.createElement("winsBlock"))
+            .textContent = wins;
+        userLossesDom
+            .textContent = "Losses";
+        userLossesDom
+            .appendChild(document.createElement("lossesBlock"))
+            .textContent = losses;
+    }
     //append clue to DOM
     clueDom
         .appendChild(document.createElement("p"))
         .textContent = clue;
+    clueDom.style.backgroundColor = colorjBlue;
+
     //append category to DOM
     catDom
         .appendChild(document.createElement("p"))
-        .textContent = cat;
+        .textContent = "Category: " + cat;
+    catDom.style.backgroundColor = colorjBlue;
 
     //create blanks for user entry
     answerArr.forEach(function (letter) {
@@ -91,13 +116,14 @@ function playGame(jObj) {
                 .textContent = letter;
             count++; //freebie: add to count
         }
+        // userAnswerDom.style.border = "1px solid #ccc";
     });
     //reveal correctly guessed letters
     document.onkeyup = function (event) {
         var userGuess = event.key;
 
-        //make sure guess is unique
-        if (guessList.indexOf(userGuess) == -1) {
+        //make sure guess is unique and game is running
+        if (guessList.indexOf(userGuess) == -1 && gameStatus == true) {
             guessList.push(userGuess);
 
             //make sure input is an alphabetical character
@@ -106,7 +132,13 @@ function playGame(jObj) {
                 if (answerArr.indexOf(userGuess) == -1) { //guessed letter not present in answer
                     guesses--;
                     wrongList.push(userGuess);
+                    document.getElementById("wrongLettersText")
+                        .textContent = "Wrong Guesses";
                     document.getElementById("wrongAnswer").play();
+                    wrongLettersDom
+                        .appendChild(document.createElement("wrongLetterBlock"))
+                        .textContent = userGuess;
+                    wrongLettersDom.style.border = "1px solid #ccc";
                 }
                 else { //guessed letter is present in answer
                     var indicies = [];//create array of indicies at which letter present
@@ -127,22 +159,31 @@ function playGame(jObj) {
                     gameStatusDom
                         .appendChild(document.createElement("p"))
                         .textContent = "Correct. You win! Play Again!";
-                    
-
+                    gameStatusDom.style.backgroundColor = colorjBlue;
+                    gameStatus = false;
+                    wins++;
+                    displayStats();
                 }
-                if (guesses == 0)
+
+                if (guesses == 0) {
                     gameStatusDom
-                        .appendChild(document.createElement("p"));
-                    console.log("You lose!")
-            };
+                        .appendChild(document.createElement("p"))
+                        .textContent = "Sorry, no more guesses remaining. Play again!";
+                    gameStatusDom.style.backgroundColor = "red";
+                    gameStatus = false;
+                    losses++;
+                    displayStats();
+                }
+
+            }
         }
-    }
+    };
 }
 
 
 /*
 To do: 
-Code the winning/losing
-Add a guessed-letters section with red blocked letters
 Style the damn page
+add loadgame sound
+Add wins and losses blocks
 */
