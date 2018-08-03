@@ -171,10 +171,10 @@ function playGame(jObj) {
                     gameStatus = false;
                     losses++;
                     //reveal answer
-                    for (var i=0; i<answerArr.length; i++) {
+                    for (var i = 0; i < answerArr.length; i++) {
                         userAnswerDom.childNodes[i].style.fontSize = "3rem";
                     }
-                displayStats();
+                    displayStats();
                 }
             }
         }
