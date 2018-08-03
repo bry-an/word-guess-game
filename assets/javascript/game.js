@@ -53,7 +53,6 @@ function playGame(jObj) {
     var wrongList = []; //list of wrong guesses
     var gameStatus = true; //stop flag
 
-    console.log(guesses);
 
     //remove problematic HTML tags from some answers
     var noHTML = dirtyAnswer.replace(/(<([^>]+)>)/ig, "");
@@ -71,7 +70,7 @@ function playGame(jObj) {
 
     //play loading music
     document.getElementById("loadGame").play();
-    
+
     //function to display user stats
     function displayStats() {
         userWinsDom
@@ -116,7 +115,6 @@ function playGame(jObj) {
                 .textContent = letter;
             count++; //freebie: add to count
         }
-        // userAnswerDom.style.border = "1px solid #ccc";
     });
     //reveal correctly guessed letters
     document.onkeyup = function (event) {
@@ -172,9 +170,12 @@ function playGame(jObj) {
                     gameStatusDom.style.backgroundColor = "red";
                     gameStatus = false;
                     losses++;
-                    displayStats();
+                    //reveal answer
+                    for (var i=0; i<answerArr.length; i++) {
+                        userAnswerDom.childNodes[i].style.fontSize = "3rem";
+                    }
                 }
-
+                displayStats();
             }
         }
     };
