@@ -179,12 +179,3 @@ function playGame(jObj) {
             }
         }
     };
-}
-
-
-/*
-To do: 
-Style the damn page
-add loadgame sound
-Add wins and losses blocks
-*/
