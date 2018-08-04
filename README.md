@@ -17,5 +17,5 @@ Collaborators could help by serving the API using HTTPS then modifying the XMLHT
 
 Additionally, the JSON object has a money keyword, so the game could be made more advanced by including the value of each answer somehow in the game -- perhaps with a DailyDouble option!
 
-##Project Contact
-Further information can be found by contacting Bryan Yunis at https://github.com/bry-an/. 
+## Project Contact
+Further information can be found by contacting Bryan at https://github.com/bry-an/. 
